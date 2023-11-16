@@ -76,6 +76,7 @@ def login():
 
 # api endpoint making sure requests have valid JWT Web Tokens
 @app.route("/protected", methods=["GET"])
+@jwt_required()
 def protected():
     current_user = get_jwt_identity
     return jsonify(logged_in=current_user), 200
