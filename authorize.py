@@ -59,6 +59,12 @@ def register():
 def login():
     return
 
+# api endpoint making sure requests have valid JWT Web Tokens
+@app.route("/protected", methods=["GET"])
+def protected():
+    current_user = get_jwt_identity
+    return jsonify(logged_in=current_user), 200
+
 
 if __name__ == "__main__":
     app.run(debug=True)
