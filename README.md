@@ -36,3 +36,7 @@ pip install pysqlite
 
 ### Author
 * **Ellis Osborn** - [Ejosborn](https://github.com/ejosborn)
+
+## Project Status
+
+- I am currently working on this project, so code will be committed often.
