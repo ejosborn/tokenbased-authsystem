@@ -10,7 +10,7 @@ app.config["JWT_SECRET_KEY"] = os.getenv('SECRET_KEY')
 jwt = JWTManager(app)
 
 # creating database file
-connect = sqlite3.connect(os.getenv('DATABASE_URL'))
+connect = sqlite3.connect('users.db')
 cursor = connect.cursor()
 
 # creating users table
@@ -24,17 +24,34 @@ cursor.execute(
 )
 
 connect.commit()
-connect.close
-
-#api endpoint for home
-@app.route("/")
-def home():
-    return
+connect.close()
 
 # api endpoint for registering users
 @app.route("/register", methods=["POST"])
 def register():
-    return
+    info = request.get_json()
+    username = info.get('username')
+    password = info.get('password')
+
+    #check if exists in user table
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT username FROM users WHERE username = ?', (username,))
+    exists = cursor.fetchone()
+    conn.close()
+
+    #if username exists
+    if exists:
+        return jsonify({'error': 'Username is already taken. Choose another username.'}), 400
+    
+    #create user
+    conn.sqlite3.connect('users.db')
+    cursor = conn.cursor()
+    cursor.execute('INSERT INTO users (username, password) VALUES (?,?)' (username, password))
+    conn.commit()
+    conn.close()
+
+    return jsonify({'message': 'User Registration Successful!'}), 201
 
 
 # api endpoint for logging users in
