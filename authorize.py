@@ -42,7 +42,7 @@ def register():
 
     #if username exists
     if exists:
-        return jsonify({'error': 'Username is already taken. Choose another username.'}), 400
+        return jsonify({'error': 'Username is already taken. Choose a unique username.'}), 400
     
     #create user
     conn.sqlite3.connect('users.db')
@@ -57,6 +57,22 @@ def register():
 # api endpoint for logging users in
 @app.route("/login", methods=["POST"])
 def login():
+    info = request.get_json()
+    username = info.get('username')
+    password = info.get('password')
+
+    #check user and password vs database data
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password))
+    userExists = cursor.fetchone()
+
+    #creates valid jwt if user exists, else return error
+    if userExists:
+        access_token = create_access_token(identity=username)
+        return jsonify(access_token=access_token), 200
+    else:
+        return jsonify({'error': 'Invalid username or password'}), 401
     return
 
 # api endpoint making sure requests have valid JWT Web Tokens

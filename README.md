@@ -21,6 +21,11 @@ pip install flask_jwt_extended
 pip install python-dotenv
 ```
 
+- Install SQLITE3 if you have Python version 2.7.3 or older (already included if you use Python 3.X.X)
+```python
+pip install pysqlite
+```
+
 ### Libraries Used
 
 - [Flask](https://flask.palletsprojects.com/en/3.0.x/) - Used to host the backend framework
