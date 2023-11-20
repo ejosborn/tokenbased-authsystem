@@ -1,4 +1,5 @@
 import os
+from flask_cors import CORS
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
@@ -6,6 +7,7 @@ import sqlite3
 
 load_dotenv()
 app = Flask(__name__)
+CORS(app)
 app.config["JWT_SECRET_KEY"] = os.getenv('SECRET_KEY')
 jwt = JWTManager(app)
 
@@ -45,9 +47,9 @@ def register():
         return jsonify({'error': 'Username is already taken. Choose a unique username.'}), 400
     
     #create user
-    conn.sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db')
     cursor = conn.cursor()
-    cursor.execute('INSERT INTO users (username, password) VALUES (?,?)' (username, password))
+    cursor.execute('INSERT INTO users (username, password) VALUES (? , ?)', (username, password))
     conn.commit()
     conn.close()
 
