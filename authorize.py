@@ -78,7 +78,7 @@ def login():
 @app.route("/protected", methods=["GET"])
 @jwt_required()
 def protected():
-    current_user = get_jwt_identity
+    current_user = get_jwt_identity()
     return jsonify(logged_in=current_user), 200
 
 
