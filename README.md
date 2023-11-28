@@ -1,5 +1,12 @@
 # Token-Based Authentication System API
-This project is the API for the Token-Based Authentication System. It will use Python and Flask for the backend, AngularJS and Javascript for the frontend, and SQLite as the database. 
+This project is the API for the Token-Based Authentication System. It will use Python and Flask for the backend, AngularJS and Javascript for the frontend, and SQLite as the database.
+
+## Frontend API
+
+- You can find the Frontend repository at https://github.com/ejosborn/tokenbased-authsystem-frontend
+
+## Project Status
+- I'm currently taking a break on this project to learn Go, but plan on building a home landing page for the user once successfully logged-in in the near future
 
 ## Getting Started
 
@@ -36,9 +43,3 @@ pip install pysqlite
 
 ## Author
 * **Ellis Osborn** - [Ejosborn](https://github.com/ejosborn)
-
-## Project Status
-
-- I am currently working on this project, so code will be committed often.
-
-- You can find the Frontend repository [here](https://github.com/ejosborn/tokenbased-authsystem-frontend)
