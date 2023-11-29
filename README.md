@@ -5,12 +5,19 @@ This project is the API for the Token-Based Authentication System. It will use P
 
 - You can find the Frontend repository at https://github.com/ejosborn/tokenbased-authsystem-frontend
 
-## Project Status
-- I'm currently taking a break on this project to learn Go, but plan on building a home landing page for the user once successfully logged-in in the near future
+## Features
 
-## Getting Started
+- User Registration: Allow users to register by providing a unique username and password.
+- User Login: Authenticate users with their username and password.
+- JWT Authentication: Use JWTs to secure protected routes
 
-### Prerequisites
+## Libraries Used
+
+- [Flask](https://flask.palletsprojects.com/en/3.0.x/) - Used to host the backend framework
+- [Flask_JWT_Extended](https://flask-jwt-extended.readthedocs.io/en/stable/) - Used for making JSON Web Tokens for only taking in valid requests
+- [SQLite3](https://www.sqlite.org/index.html) - Storing user data
+
+## Setup
 
 ### Installing
 - Install Flask
@@ -32,14 +39,6 @@ pip install python-dotenv
 ```python
 pip install pysqlite
 ```
-
-## Libraries Used
-
-- [Flask](https://flask.palletsprojects.com/en/3.0.x/) - Used to host the backend framework
-- [Flask_JWT_Extended](https://flask-jwt-extended.readthedocs.io/en/stable/) - Used for making JSON Web Tokens for only taking in valid requests
-- dotenv - Reading .env variables
-- [SQLite3](https://www.sqlite.org/index.html) - Storing user data
-## Usage
 
 ## Author
 * **Ellis Osborn** - [Ejosborn](https://github.com/ejosborn)
