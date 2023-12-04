@@ -74,7 +74,7 @@ def login():
         access_token = create_access_token(identity=username)
         return jsonify(access_token=access_token), 200
     else:
-        return jsonify({'error': 'Invalid username or password'}), 401
+        return jsonify({'error': ' Invalid username or password'}), 401
 
 # api endpoint making sure requests have valid JWT Web Tokens
 @app.route("/protected", methods=["GET"])
